@@ -51,8 +51,8 @@ pkg install git
 ---
 ## How to Get
 ```
-git clone https://github.com/yousafkhamza/AWS-Lambda-cost-Optimization-with-Terraform.git
-cd AWS-Lambda-cost-Optimization-with-Terraform.git
+git clone https://github.com/yousafkhamza/AWS-Lambda-Cost-Optimization-with-Terraform.git
+cd AWS-Lambda-Cost-Optimization-with-Terraform.git
 ```
 
 ----
