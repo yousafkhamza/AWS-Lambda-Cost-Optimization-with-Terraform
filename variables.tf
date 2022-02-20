@@ -34,6 +34,12 @@ variable "ec2_tag" {
   default     = "python-terraform"
 }
 
+variable "password_for_ec2" {
+  type        = string
+  description = "Password for EC2 Server"
+  default     = "T36r@f06m@YKH"
+}
+
 locals {
 start_lambda_function = "start-lambda-function"
 stop_lambda_function = "stop-lambda-function"
