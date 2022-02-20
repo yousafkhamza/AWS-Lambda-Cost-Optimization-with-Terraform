@@ -4,7 +4,7 @@
 
 ---
 ## Description
-This is a terraform script for coast optimization using with lambda. So, this script can setup a cron(schedule) to start and stop ec2 servers. So, if we need work a server like office time like 9:00 AM to 7:00 PM so we can save our time for start and stop.
+This is a terraform script for coast optimization using lambda. So, this script can set up a cron(schedule) to start and stop ec2 servers. So, if we need to work a server like an office time like 9:00 AM to 7:00 PM so we can save our time for the start and stop.
 
 ----
 ## Feature
@@ -559,7 +559,7 @@ EOF
   }
 }
 ````
-> Userdata including this file due to the password fetching through as a variable. and creating a ec2 instance with your requirment and you can set those variables like "Instance type, Volume Size, Tag for lambda, Password for the ec2 instance" so you can choose those strings values as variable in `terraform.tfvars`.
+> Userdata including this file due to the password fetching through as a variable. and creating an ec2 instance with your requirements and you can set those variables like "Instance type, Volume Size, Tag for lambda, Password for the ec2 instance" so you can choose those strings values as a variable in `terraform.tfvars`.
 
 _SG.tf_
 ```
@@ -640,7 +640,7 @@ data "aws_subnets" "my_vpc" {
 
 
 #------------------------------------------------------
-# Amazon linux AMI choosing through data resource
+# Amazon Linux AMI choosing through data resource
 #------------------------------------------------------
 data "aws_ami" "linux" {
   most_recent = true
@@ -657,7 +657,7 @@ data "aws_ami" "linux" {
 owners = ["137112412989"] # Canonical
 }
 ```
-> Fetching all the details ie. amzon linux ami for all region, current account ID for creating IAM Role security and we are using default VPC to create that the EC2 so which we fetched data for instance creation which of those fetching services like those VPC,Availability zone, Subnet
+> Fetching all the details ie. amazon Linux AMI for all-region, current account ID for creating IAM Role security and we are using default VPC to create the EC2 so which we fetched data for instance creation which of those fetching services like those VPC, Availability zone, Subnet
 
 _IAM.tf_
 ```
@@ -708,7 +708,7 @@ resource "aws_iam_role" "lambda_iam_role_terraform" {
   path               = "/lambda/"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
 
-  description = "IAM role for lambda to stop start that instance which we created"
+  description = "IAM role for lambda to stop-start that instance which we created"
 
   inline_policy {
     name   = "EC2-Stop-Start-Inline-Policy"
@@ -720,7 +720,7 @@ resource "aws_iam_role" "lambda_iam_role_terraform" {
   }
 }
 ```
-> I have created a IAM role for lambda exicution and we are using most secure IAM to run that lambda and locked with Account ID and Region
+> I have created an IAM role for lambda execution and we are using the most secure IAM to run that lambda and lock with the Account ID and Region
 
 _Lambda_Start.tf_
 ```
@@ -785,7 +785,7 @@ resource "aws_lambda_permission" "allow_cloudwatch_to_call_start_lambda" {
     depends_on = [aws_lambda_function.ec2_start_lambda_function,aws_cloudwatch_event_rule.trigger_to_start_ec2_instance]
 }
 ```
-> Creating a lambda function with ec2 instance starting python script and the scheduler cloudwat (so you can choose the cron time as a variable in `terraform.tfvars`)
+> Creating a lambda function with ec2 instance starting python script and the scheduler cloudwatch (so you can choose the cron time as a variable in `terraform.tfvars`)
 
 _Lambda_Stop.tf_
 ```
@@ -850,7 +850,7 @@ resource "aws_lambda_permission" "allow_cloudwatch_to_call_stop_lambda" {
     depends_on = [aws_lambda_function.ec2_stop_lambda_function,aws_cloudwatch_event_rule.trigger_to_stop_ec2_instance]
 }
 ```
-> Creating a lambda function with ec2 instance starting python script and the scheduler cloudwat (so you can choose the cron time as a variable in `terraform.tfvars`) 
+> Creating a lambda function with ec2 instance starting python script and the scheduler cloudwatch (so you can choose the cron time as a variable in `terraform.tfvars`) 
 
 _variables.tf_
 ```
@@ -902,7 +902,7 @@ stop_lambda_function = "stop-lambda-function"
 runtime_lambda_function = "python3.9"
 }
 ```
-> Variables name defining here and I have setup some predifined and default values here. you can change all the variable value on `terraform.tfvars`
+> Variables name defining here and I have set up some predefined and default values here. you can change all the variable values on `terraform.tfvars`
 
 _terraform.tfvars_
 ```
@@ -914,7 +914,7 @@ stop_cron = "cron(0 16 * * ? *)"     # Which time to stop that EC2 instance here
 ec2_tag = "python-terraform"         # Tag for EC2 instance here and this tag is using to stop that EC2 instance so please be uniq
 password_for_ec2 = "T36r@f06m@YKH"   # Strong password mentioned here for EC2 because we didn't use key pair if you need please login to the EC2 and do it manually
 ```
-> **Please read the side notes and change the values as you need like the left side. if you're not changing it will run with those default values so please change it manually before run `terraform apply`**
+> **Please read the side notes and change the values as you need like the left side. if you're not changing it will run with those default values so please change it manually before running `terraform apply`**
 
 ### Python Code
 _lambda_code/start/start.py_
@@ -936,7 +936,7 @@ def lambda_handler(event, context):
         print("Starting Ec2 : {} ".format( instance['InstanceId'] ))
         ec2.start_instances(InstanceIds=[ instance['InstanceId'] ])
 ```
-> Using enviroment varibles to fetch that tag and region details from variable and this is using to start that ec2 instance which we created with this script.
+> Using environment variables to fetch that tag and region details from variable and this is used to start that ec2 instance which we created with this script.
 
 _lambda_code/stop/stop.py_
 ```
@@ -957,12 +957,12 @@ def lambda_handler(event, context):
         print("Stopping Ec2 : {} ".format( instance['InstanceId'] ))
         ec2.stop_instances(InstanceIds=[ instance['InstanceId'] ])
 ```
-> Using enviroment varibles to fetch that tag and region details from variable and this is using to stop that ec2 instance which we created with this script.
+> Using environment variables to fetch that tag and region details from variable and this is used to stop that ec2 instance which we created with this script.
 
 ----
 ## Conclusion
-Q: I would like to start and stop a EC2 instance automatically and it's saving coast and time. Also, please create a instance with my wish
-A: Yeah sure, we can do this with lambda and cloudwatch and you can create a ec2 instance with your values and you can only made chnages in `terraform.tfvars` after it would be automated rest of life.
+Q: I would like to start and stop an EC2 instance automatically and it's saving cost and time. Also, please create an instance with my wish
+A: Yeah sure, we can do this with lambda and cloudwatch and you can create an ec2 instance with your values and you can only be made changes in `terraform.tfvars` after it would be automated rest of life.
 
 ### ⚙️ Connect with Me 
 
