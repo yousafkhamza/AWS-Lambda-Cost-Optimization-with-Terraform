@@ -1,10 +1,10 @@
-# AWS-Lambda-Coast-Optimization-with-Terraform
+# AWS-Lambda-Cost-Optimization-with-Terraform
 
 [![Build](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 ---
 ## Description
-This is a terraform script for coast optimization using lambda. So, this script can set up a cron(schedule) to start and stop ec2 servers. So, if we need to work a server like an office time like 9:00 AM to 7:00 PM so we can save our time for the start and stop.
+This is a terraform script for cost optimization using lambda. So, this script can set up a cron(schedule) to start and stop ec2 servers. So, if we need to work a server like an office time like 9:00 AM to 7:00 PM so we can save our time for the start and stop.
 
 ----
 ## Feature
@@ -51,8 +51,8 @@ pkg install git
 ---
 ## How to Get
 ```
-git clone https://github.com/yousafkhamza/AWS-Lambda-Coast-Optimization-with-Terraform.git
-cd AWS-Lambda-Coast-Optimization-with-Terraform.git
+git clone https://github.com/yousafkhamza/AWS-Lambda-cost-Optimization-with-Terraform.git
+cd AWS-Lambda-cost-Optimization-with-Terraform.git
 ```
 
 ----
