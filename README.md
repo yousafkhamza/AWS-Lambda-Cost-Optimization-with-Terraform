@@ -12,6 +12,11 @@ This is a terraform script for cost optimization using lambda. So, this script c
 - Automated with CloudWatch
 
 ----
+## Architecture
+
+![](lambda_code/screenshots/arch.jpg)
+
+----
 ## Services Created
 
 - EC2
