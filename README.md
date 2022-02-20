@@ -27,6 +27,7 @@ This is a terraform script for coast optimization using with lambda. So, this sc
 
 #### Terraform Installation
 [Terraform Installation from official](https://www.terraform.io/downloads)
+
 _Terrafom Installation from my script_
 ```
 curl -Ls https://raw.githubusercontent.com/yousafkhamza/Terraform_installation/main/terraform.sh | bash
