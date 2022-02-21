@@ -521,7 +521,7 @@ aws_instance.ec2_instance: Creation complete after 33s [id=i-07d44771b790189bc]
 
 Apply complete! Resources: 11 added, 0 changed, 0 destroyed.
 ```
-### _Screenshots_
+### _Output Screenshots (at AWS)_
 ![](lambda_code/screenshots/1.png)
 ![](lambda_code/screenshots/2.png)
 ![](lambda_code/screenshots/3.png)
