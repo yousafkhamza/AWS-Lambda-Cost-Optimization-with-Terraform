@@ -13,7 +13,7 @@ This is a terraform script for cost optimization using lambda. So, this script c
 
 ----
 ## Architecture
-![](lambda_code/screenshots/flow_arch.jpg)
+![](lambda_code/screenshots/flow_architecture.jpg)
 
 ----
 ## Services Created
