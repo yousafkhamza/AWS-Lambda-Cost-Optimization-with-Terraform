@@ -31,7 +31,8 @@ This is a terraform script for cost optimization using lambda. So, this script c
 
 #### Terraform Installation
 [Terraform Installation from official](https://www.terraform.io/downloads)
-_Terrafom Installation from my script_
+
+_Terrafom Installation from my script:_
 ```
 curl -Ls https://raw.githubusercontent.com/yousafkhamza/Terraform_installation/main/terraform.sh | bash
 ```
