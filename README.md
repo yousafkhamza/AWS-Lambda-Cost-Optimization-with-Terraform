@@ -21,8 +21,8 @@ This is a terraform script for cost optimization using lambda. So, this script c
 - EC2
 - Security Group
 - IAM Role (Custom Inline Policies for lambda)
-- Lambda Function
-- Cloudwatch Trigger
+- Lambda Functions
+- Cloudwatch Event Rule Trigger
 
 ----
 ## Pre-Requests
