@@ -4,16 +4,15 @@
 
 ---
 ## Description
-This is a terraform script for cost optimization using lambda. So, this script can set up a cron(schedule) to start and stop ec2 servers. So, if we need to work a server like an office time like 9:00 AM to 7:00 PM so we can save our time for the start and stop.
+This is a terraform script for cost optimization using lambda. So, this script can set up a cron(schedule) to start and stop ec2 servers. So, if we need to work a server like an office time like 9:00 AM to 7:00 PM then we can save our time and effort to do this thing manually.
 
 ----
 ## Feature
-- We can save billing 
+- We can save billing money  
 - Automated with CloudWatch
 
 ----
 ## Architecture
-
 ![](lambda_code/screenshots/arch.jpg)
 
 ----
@@ -21,7 +20,7 @@ This is a terraform script for cost optimization using lambda. So, this script c
 
 - EC2
 - Security Group
-- IAM Role (Custom inline policies)
+- IAM Role (Custom Inline Policies for lambda)
 - Lambda Function
 - Cloudwatch Trigger
 
@@ -922,7 +921,7 @@ password_for_ec2 = "T36r@f06m@YKH"   # Strong password mentioned here for EC2 be
 > **Please read the side notes and change the values as you need like the left side. if you're not changing it will run with those default values so please change it manually before running `terraform apply`**
 
 ### Python Code
-_lambda_code/start/start.py_
+_lambda_code/start/lambda_function.py_
 ```
 import boto3
 import os
@@ -941,9 +940,9 @@ def lambda_handler(event, context):
         print("Starting Ec2 : {} ".format( instance['InstanceId'] ))
         ec2.start_instances(InstanceIds=[ instance['InstanceId'] ])
 ```
-> Using environment variables to fetch that tag and region details from variable and this is used to start that ec2 instance which we created with this script.
+> Using environment variables to fetch that tag and region details from variable and so this is used to start that ec2 instance which we created with this script.
 
-_lambda_code/stop/stop.py_
+_lambda_code/stop/lambda_function.py_
 ```
 import boto3
 import os
@@ -962,12 +961,13 @@ def lambda_handler(event, context):
         print("Stopping Ec2 : {} ".format( instance['InstanceId'] ))
         ec2.stop_instances(InstanceIds=[ instance['InstanceId'] ])
 ```
-> Using environment variables to fetch that tag and region details from variable and this is used to stop that ec2 instance which we created with this script.
+> Using environment variables to fetch that tag and region details from variable and so this is used to stop that ec2 instance which we created with this script.
 
 ----
 ## Conclusion
-Q: I would like to start and stop an EC2 instance automatically and it's saving cost and time. Also, please create an instance with my wish
-A: Yeah sure, we can do this with lambda and cloudwatch and you can create an ec2 instance with your values and you can only be made changes in `terraform.tfvars` after it would be automated rest of life.
+Q: I would like to start and stop an EC2 instance automatically and it's saving cost and time. Also, please create an instance with my wish. So, is it possible?
+
+A: Yeah sure, we can do this with lambda and cloudwatch and you can create an ec2 instance with your required values as you wish. Also, those values can only change through in `terraform.tfvars` so, after it will be automated on rest of time.
 
 ### ⚙️ Connect with Me 
 
