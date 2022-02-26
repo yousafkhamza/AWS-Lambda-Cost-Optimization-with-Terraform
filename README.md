@@ -10,6 +10,7 @@ This is a terraform script for cost optimization using lambda. So, this script c
 ## Feature
 - We can save billing money  
 - Automated with CloudWatch
+- EC2 instance with root password (if you need key based please enable that after creation)
 
 ----
 ## Architecture
